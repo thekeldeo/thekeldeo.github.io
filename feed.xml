@@ -1,6 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.5.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-08-03T19:33:27+07:00</updated><id>http://localhost:4000/</id><title type="html">SecretSword Blog</title><subtitle>Nơi tổng hợp một số ghi chép linh tinh mà tôi lượm nhặt được trong quá tình trở thành một developer chân chính. Hy vọng nó sẽ giúp ích mọi người phần nào.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.5.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-08-04T03:54:14+07:00</updated><id>http://localhost:4000/</id><title type="html">SecretSword Blog</title><subtitle>Nơi tổng hợp một số ghi chép linh tinh mà tôi lượm nhặt được trong quá tình trở thành một developer chân chính. Hy vọng nó sẽ giúp ích mọi người phần nào.
 </subtitle><author><name>SecretSword</name></author><entry><title type="html">Chia sẻ một số cấu hình nginx hữu ích</title><link href="http://localhost:4000/ops/2017/08/03/chia-se-mot-so-cau-hinh-nginx-tien-dung..html" rel="alternate" type="text/html" title="Chia sẻ một số cấu hình nginx hữu ích" /><published>2017-08-03T16:15:00+07:00</published><updated>2017-08-03T16:15:00+07:00</updated><id>http://localhost:4000/ops/2017/08/03/chia-se-mot-so-cau-hinh-nginx-tien-dung.</id><content type="html" xml:base="http://localhost:4000/ops/2017/08/03/chia-se-mot-so-cau-hinh-nginx-tien-dung..html">&lt;p&gt;Nginx là một web serve rất mạnh được dùng bởi cả youtube, facebook, … Tuy nhiên việc cấu hình nginx không phải là một việc dễ dàng.
 Ở bài post này, tôi sẽ chia sẻ một số config mà tôi thấy hữu ích.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/apache_nginx_tw.png&quot; alt=&quot;nginx vs apache&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;trước-khi-bắt-đầu-hãy-làm-quen-một-chút-với-nginx&quot;&gt;Trước khi bắt đầu, hãy làm quen một chút với nginx&lt;/h2&gt;
 
@@ -187,6 +189,8 @@
 Nhưng vấn đề khá lớn của Mean Stack nói riêng và những framework client rendering nói chung đó là rất khó để những con bot như google có thể crawl được dữ liệu.&lt;/p&gt;
 
 &lt;p&gt;Hôm nay tôi sẽ hướng dẫn mọi người khắc phục vẫn đề này một phần nào đó !.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/full-stack-developer.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;vấn-đề&quot;&gt;Vấn đề&lt;/h2&gt;
 
