@@ -30,12 +30,6 @@ ul, ol, dl, figure,
 .highlight {
   margin-bottom: 15px; }
 
-h1:before {
-  color: #CCC;
-  margin-left: -20px;
-  margin-right: 10px;
-  content: "#"; }
-
 /**
  * Images
  */
@@ -54,7 +48,8 @@ figure > img {
   display: block; }
 
 figcaption {
-  font-size: 14px; }
+  font-size: 14px;
+  font-family: 'Inconsolata', monospace; }
 
 /**
  * Lists
@@ -171,7 +166,8 @@ blockquote {
   font-style: italic;
   opacity: 0.6;
   border-left: 3px solid #efefef;
-  padding-left: 16px; }
+  padding-left: 16px;
+  font-family: 'Inconsolata', monospace; }
 
 code {
   background: #efefef;
@@ -180,19 +176,22 @@ code {
   border-radius: 3px;
   padding-left: 6px;
   padding-right: 6px;
-  font-size: 0.95em; }
+  font-size: 0.95em;
+  font-family: 'Inconsolata', monospace; }
 
 .skip code {
   background: none;
   color: initial;
   font-size: 1.0em;
-  padding: initial; }
+  padding: initial;
+  font-family: 'Inconsolata', monospace; }
 
 pre {
   background: #F8F8F8 !important;
   padding: 10px;
   border-radius: 3px;
-  overflow-x: hidden !important; }
+  overflow-x: hidden !important;
+  font-family: 'Inconsolata', monospace; }
 
 pre > code {
   padding: 0 !important;
@@ -375,27 +374,40 @@ code.math {
 
 .post-title {
   display: inline-block;
-  font-size: 42px;
+  font-size: 36px;
   letter-spacing: -1px;
   line-height: 1; }
   @media screen and (max-width: 800px) {
     .post-title {
-      font-size: 36px; } }
+      font-size: 32px; } }
 
 .post-content {
   margin-bottom: 30px; }
   .post-content h2 {
-    font-size: 32px; }
+    font-size: 28px;
+    font-weight: bold; }
     @media screen and (max-width: 800px) {
       .post-content h2 {
-        font-size: 28px; } }
+        font-size: 26.4px; } }
+    .post-content h2:before {
+      color: #CCC;
+      margin-left: -20px;
+      margin-right: 10px;
+      content: "*"; }
   .post-content h3 {
-    font-size: 26px; }
+    font-size: 24px;
+    font-weight: bold; }
     @media screen and (max-width: 800px) {
       .post-content h3 {
         font-size: 22px; } }
+    .post-content h3:before {
+      color: #CCC;
+      margin-left: -15px;
+      margin-right: 7px;
+      content: "^"; }
   .post-content h4 {
-    font-size: 20px; }
+    font-size: 20px;
+    font-weight: bold; }
     @media screen and (max-width: 800px) {
       .post-content h4 {
         font-size: 18px; } }
