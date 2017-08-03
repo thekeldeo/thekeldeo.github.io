@@ -7,7 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>8 NPM trick sẽ hữu dụng cho bạn!</title>
-  <meta name="description" content="8 trick npm bạn có thể sử dụng để gây ấn tượng với đồng nghiệp của mình Khi bạn nhìn những người đồng mình của mình code, bạn có thể thấy họ sử dụng phím tắt...">
+  <meta name="description" content="8 trick npm bạn có thể sử dụng để gây ấn tượng với đồng nghiệp của mình.">
+  <link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700&amp;subset=latin-ext,vietnamese" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,700&amp;subset=vietnamese" rel="stylesheet">
 
   <link rel="stylesheet" href="/assets/main.css">
@@ -25,7 +26,12 @@
   <div class="wrapper">
     
     
-    <a class="site-title" href="/">SecretSword Blog</a>
+    <a class="site-title" href="/">
+      <div class="logo">
+        <img class="" src="/assets/img/logo.jpg" alt="SecretSword Blog">
+      </div>
+      <p>SecretSword Blog</p>
+    </a>
   
     
       <nav class="site-nav">
@@ -82,8 +88,9 @@
   </header>
 
   <div class="post-content" itemprop="articleBody">
-    <p>8 trick npm bạn có thể sử dụng để gây ấn tượng với đồng nghiệp của mình
-Khi bạn nhìn những người đồng mình của mình code, bạn có thể thấy họ sử dụng phím tắt hoặc một số thủ thuật, nhưng bạn không thích nó và muốn bỏ nó ngay trong suy nghĩ. Chuyện đó xảy ra với tất cả chúng ta tại mọi lúc.</p>
+    <p>8 trick npm bạn có thể sử dụng để gây ấn tượng với đồng nghiệp của mình.</p>
+
+<p>Khi bạn nhìn những người đồng mình của mình code, bạn có thể thấy họ sử dụng phím tắt hoặc một số thủ thuật trông rất <em>cool ngầu</em> và rất muốn học theo.</p>
 
 <p>Trong bài này, Chúng ta sẽ tìm hiểu một số trick rất hữu ích với npm. Có quá nhiều thứ để chúng ta có thể biết, vậy nên tôi sẽ tập trung vào những thủ thuật hữu ích và gần gũi nhất thường thấy với các lập trình viên.</p>
 
@@ -91,16 +98,16 @@ Khi bạn nhìn những người đồng mình của mình code, bạn có thể
 
 <p>Để tất cả mọi người đều hiểu, đặc biệt là những người mới sử dụng npm, hãy tìm hiểu tổng quan về cú pháp tắt và đảm bảo không ai bỏ lỡ những thứ đơn giản này:</p>
 
-<h3 id="--cài-đặt-một-package">- Cài đặt một package:</h3>
+<h3 id="cài-đặt-một-package">Cài đặt một package:</h3>
 <p><code class="highlighter-rouge">npm install pkg</code>, Tắt: <code class="highlighter-rouge">npm i pkg</code></p>
 
-<h3 id="--cài-đặt-một-package-cục-bộ">- Cài đặt một package cục bộ:</h3>
+<h3 id="cài-đặt-một-package-cục-bộ">Cài đặt một package cục bộ:</h3>
 <p><code class="highlighter-rouge">npm i --global pgk</code>, Tắt: <code class="highlighter-rouge">npm i –g pkg</code></p>
 
-<h3 id="--cài-đặt-một-package-và-lưu-nó-vào-dependency">- Cài đặt một package và lưu nó vào dependency:</h3>
+<h3 id="cài-đặt-một-package-và-lưu-nó-vào-dependency">Cài đặt một package và lưu nó vào dependency:</h3>
 <p><code class="highlighter-rouge">npm i –save pkg</code>, Tắt: <code class="highlighter-rouge">npm i –S pkg</code></p>
 
-<h3 id="--cài-đặt-một-package-và-lưu-nó-vào-devdependency">- Cài đặt một package và lưu nó vào devDependency:</h3>
+<h3 id="cài-đặt-một-package-và-lưu-nó-vào-devdependency">Cài đặt một package và lưu nó vào devDependency:</h3>
 <p><code class="highlighter-rouge">npm i –save-dev pkg</code>, Tắt: <code class="highlighter-rouge">npm i –D pkg</code></p>
 
 <p>Để tìm hiểu thêm về các cú pháp viết tắt khác hãy đọc <a href="https://docs.npmjs.com/misc/config#shorthands-and-other-cli-niceties">npm shorthand list</a>.</p>
