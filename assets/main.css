@@ -94,6 +94,14 @@ table tr:nth-last-child(1) td {
 h1, h2, h3, h4, h5, h6 {
   font-weight: 400; }
 
+h1 {
+  font-weight: 700; }
+  h1:before {
+    color: #CCC;
+    margin-left: -20px;
+    margin-right: 10px;
+    content: "#"; }
+
 /**
  * Links
  */

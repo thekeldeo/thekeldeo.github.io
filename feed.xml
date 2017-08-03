@@ -1,5 +1,189 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.5.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-08-03T16:00:43+07:00</updated><id>http://localhost:4000/</id><title type="html">SecretSword Blog</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
-</subtitle><author><name>SecretSword</name></author><entry><title type="html">Hướng dẫn SEO Web trong MEAN STACK</title><link href="http://localhost:4000/dev/2017/08/03/seo-with-mean-stack..html" rel="alternate" type="text/html" title="Hướng dẫn SEO Web trong MEAN STACK" /><published>2017-08-03T14:27:58+07:00</published><updated>2017-08-03T14:27:58+07:00</updated><id>http://localhost:4000/dev/2017/08/03/seo-with-mean-stack.</id><content type="html" xml:base="http://localhost:4000/dev/2017/08/03/seo-with-mean-stack..html">&lt;p&gt;MEAN stack là một combo tuyệt vời sử dụng SPA và client rendering, rất phù hợp với webapp cho admin, stuff ,…
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.5.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-08-03T17:34:13+07:00</updated><id>http://localhost:4000/</id><title type="html">SecretSword Blog</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+</subtitle><author><name>SecretSword</name></author><entry><title type="html">Chia sẻ một số cấu hình nginx hữu ích</title><link href="http://localhost:4000/ops/2017/08/03/chia-se-mot-so-cau-hinh-nginx-tien-dung..html" rel="alternate" type="text/html" title="Chia sẻ một số cấu hình nginx hữu ích" /><published>2017-08-03T16:15:00+07:00</published><updated>2017-08-03T16:15:00+07:00</updated><id>http://localhost:4000/ops/2017/08/03/chia-se-mot-so-cau-hinh-nginx-tien-dung.</id><content type="html" xml:base="http://localhost:4000/ops/2017/08/03/chia-se-mot-so-cau-hinh-nginx-tien-dung..html">&lt;p&gt;Nginx là một web serve rất mạnh được dùng bởi cả youtube, facebook, … Tuy nhiên việc cấu hình nginx không phải là một việc dễ dàng.
+Ở bài post này, tôi sẽ chia sẻ một số config mà tôi thấy hữu ích.&lt;/p&gt;
+
+&lt;h2 id=&quot;trước-khi-bắt-đầu-hãy-làm-quen-một-chút-với-nginx&quot;&gt;Trước khi bắt đầu, hãy làm quen một chút với nginx&lt;/h2&gt;
+
+&lt;p&gt;Để cài nginx, các bạn hãy cài thông qua yum hay apt-get, ví dụ:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo yum install nginx
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Khởi động nginx: &lt;code class=&quot;highlighter-rouge&quot;&gt;sudo service nginx start&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Dừng nginx: &lt;code class=&quot;highlighter-rouge&quot;&gt;sudo service nginx stop&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Restart: &lt;code class=&quot;highlighter-rouge&quot;&gt;sudo service nginx restart&lt;/code&gt; hoặc &lt;code class=&quot;highlighter-rouge&quot;&gt;sudo service nginx reload&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;File config của nginx sẽ nằm ở &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/nginx/conf.d/default.config&lt;/code&gt; và nginx sẽ log ở &lt;code class=&quot;highlighter-rouge&quot;&gt;/var/log/nginx/&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Hãy mở &lt;code class=&quot;highlighter-rouge&quot;&gt;default.config&lt;/code&gt; để tiếp tục nào và các file log của nginx sẽ giúp bạn khi có lỗi đó !&lt;/p&gt;
+
+&lt;h2 id=&quot;cấu-hình-nginx-để-tạo-ứng-dụng-của-bạn-chạy-ở-cổng-80&quot;&gt;Cấu hình nginx để tạo ứng dụng của bạn chạy ở cổng 80&lt;/h2&gt;
+
+&lt;p&gt;Ví dụ bạn muốn home page của bạn chạy http mặc định ở cổng 80 hãy làm như sau:&lt;/p&gt;
+
+&lt;p&gt;Tạo một upstream&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;upstream homepage {
+    server your_ip_server:your_port; 
+    #example: 125.212.233.50:8080;
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Sau đó sửa phần &lt;code class=&quot;highlighter-rouge&quot;&gt;server&lt;/code&gt; như sau&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;server {
+
+    listen 80 default_server;
+    listen [::]:80 default_server ipv6only=on;
+    #charset koi8-r;
+
+    #access_log  logs/host.access.log  main;
+
+    # Load configuration files for the default server block.
+    include /etc/nginx/default.d/*.conf;
+
+    location / {
+        proxy_pass  http://homepage/;
+    }
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Save lại và restart để xem thành quả ~&lt;/p&gt;
+
+&lt;h2 id=&quot;cấu-hình-một-ứng-dụng-chạy-trên-router-con-của-trang-chủ&quot;&gt;Cấu hình một ứng dụng chạy trên router con của trang chủ&lt;/h2&gt;
+
+&lt;p&gt;Tôi có app chính chạy ở port 8080 –&amp;gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;http://yourdomain.com&lt;/code&gt;. Tôi có thêm một app blog nữa chạy ở port 8088. Để App blog chạy ở router con  &lt;code class=&quot;highlighter-rouge&quot;&gt;http://yourdomain.com/blog&lt;/code&gt; thì cấu hình như sau.&lt;/p&gt;
+
+&lt;p&gt;Tạo thêm một upstream nữa cho blog&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;upstream blog {
+    server 125.212.233.50:8088; 
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Ở phần &lt;code class=&quot;highlighter-rouge&quot;&gt;server&lt;/code&gt;, thêm location mới với path là router con mà bạn muốn :&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;server {
+
+    listen 80 default_server;
+    listen [::]:80 default_server ipv6only=on;
+    #charset koi8-r;
+
+    #access_log  logs/host.access.log  main;
+
+    # Load configuration files for the default server block.
+    include /etc/nginx/default.d/*.conf;
+
+    location / {
+        proxy_pass  http://homepage/;
+    }
+    location /blog {        #ADD THIS
+        proxy_pass  http://blog/;
+        try_files $uri $uri/ /blog/;
+    }
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;cấu-hình-để-chạy-app-php&quot;&gt;Cấu hình để chạy app php&lt;/h2&gt;
+
+&lt;p&gt;Để cấu hình cho php (chạy bằng &lt;code class=&quot;highlighter-rouge&quot;&gt;php-cgi&lt;/code&gt;) thêm một location nữa ở trong &lt;code class=&quot;highlighter-rouge&quot;&gt;server&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;location ~ \.php$ {
+    try_files $uri =404;
+    root           /var/www/html;
+    fastcgi_pass   127.0.0.1:9000;
+    fastcgi_index  index.php;
+    #fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;
+    fastcgi_split_path_info ^(.+\.php)(/.+)$;
+    fastcgi_param   PATH_INFO         $fastcgi_path_info;
+    fastcgi_param   SCRIPT_FILENAME   $document_root$fastcgi_script_name;
+    include        fastcgi_params;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Cấu hình thêm một router con cho app php, tiếp tục sửa phần &lt;code class=&quot;highlighter-rouge&quot;&gt;server&lt;/code&gt; nhé:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;location /php {
+    root /var/www/html;   #thư mục chứa project php của bạn
+    index index.php index.html index.htm;
+    try_files $uri $uri/ /php/index.php?$args;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Save và restart nhé.&lt;/p&gt;
+
+&lt;h2 id=&quot;cấu-hình-với-chạy-app-trên-subdomain&quot;&gt;Cấu hình với chạy app trên subdomain&lt;/h2&gt;
+
+&lt;p&gt;Bạn muốn app của mình chạy trên subdomain như &lt;code class=&quot;highlighter-rouge&quot;&gt;http://blog.yourdomain.com&lt;/code&gt; hãy làm như sau:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Tạo một bản ghi trên domain dashboard của bạn với giá trị như sau:
+    &lt;ul&gt;
+      &lt;li&gt;&lt;strong&gt;Host record&lt;/strong&gt;: tên sub domain, ở đây là &lt;code class=&quot;highlighter-rouge&quot;&gt;blog&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Address&lt;/strong&gt;: địa chỉ ip của server&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Record type&lt;/strong&gt;: &lt;code class=&quot;highlighter-rouge&quot;&gt;A(Address)&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;TTL&lt;/strong&gt;: &lt;code class=&quot;highlighter-rouge&quot;&gt;360&lt;/code&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Thêm đoạn code sau trong file config nginx:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;server {
+    listen       80;
+    server_name  blog.yourdomain.com;
+
+    location / {
+	proxy_set_header X-Forwarded-For $remote_addr;
+        proxy_pass http://localhost:8088; # 8088 : port chạy app blog
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Xong Save và Restart nginx ~&lt;/p&gt;
+
+&lt;h2 id=&quot;cấu-hình-một-domain-mới-chạy-vào-một-app-khác&quot;&gt;Cấu hình một domain mới chạy vào một app khác&lt;/h2&gt;
+
+&lt;p&gt;Bây giờ nếu tôi muốn app blog chạy trên một domain mới như &lt;em&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;http://yournewdomain.com&lt;/code&gt;&lt;/em&gt;, làm như sau:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Tạo bản ghi mới trên dashboard của domain mới với giá trị như sau:
+    &lt;ul&gt;
+      &lt;li&gt;&lt;strong&gt;Host record&lt;/strong&gt;: &lt;code class=&quot;highlighter-rouge&quot;&gt;@&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Address&lt;/strong&gt;: địa chỉ ip của server&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Record type&lt;/strong&gt;: &lt;code class=&quot;highlighter-rouge&quot;&gt;A(Address)&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;TTL&lt;/strong&gt;: &lt;code class=&quot;highlighter-rouge&quot;&gt;360&lt;/code&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Thêm một server mới trong file config nginx:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;server {
+    listen       80;
+    server_name  yournewdomain.com;
+
+    location / {
+        proxy_pass http://localhost:8088; #8088 là port của app blog
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Save và Restart nginx.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Lưu ý sẽ phải mất tầm 15p để DNS của domain nhận ip của server đó nhé&lt;/em&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;trên-đây-là-những-kiến-thức-của-mình-với-nginx-hy-vọng-sẽ-giúp-mọi-người-phần-nào-đó-nếu-có-thắc-mắc-hãy-liên-hệ-với-mình-nhé&quot;&gt;Trên đây là những kiến thức của mình với nginx, hy vọng sẽ giúp mọi người phần nào đó. Nếu có thắc mắc hãy liên hệ với mình nhé&lt;/h3&gt;</content><author><name>SecretSword</name></author><summary type="html">Nginx là một web serve rất mạnh được dùng bởi cả youtube, facebook, … Tuy nhiên việc cấu hình nginx không phải là một việc dễ dàng. Ở bài post này, tôi sẽ chia sẻ một số config mà tôi thấy hữu ích.</summary></entry><entry><title type="html">Hướng dẫn SEO Web trong MEAN STACK</title><link href="http://localhost:4000/dev/2017/08/03/seo-with-mean-stack..html" rel="alternate" type="text/html" title="Hướng dẫn SEO Web trong MEAN STACK" /><published>2017-08-03T14:27:58+07:00</published><updated>2017-08-03T14:27:58+07:00</updated><id>http://localhost:4000/dev/2017/08/03/seo-with-mean-stack.</id><content type="html" xml:base="http://localhost:4000/dev/2017/08/03/seo-with-mean-stack..html">&lt;p&gt;MEAN stack là một combo tuyệt vời sử dụng SPA và client rendering, rất phù hợp với webapp cho admin, stuff ,…
 Nhưng vấn đề khá lớn của Mean Stack nói riêng và những framework client rendering nói chung đó là rất khó để những con bot như google có thể crawl được dữ liệu.&lt;/p&gt;
 
 &lt;p&gt;Hôm nay tôi sẽ hướng dẫn mọi người khắc phục vẫn đề này một phần nào đó !.&lt;/p&gt;
@@ -65,7 +249,9 @@ console.log(&quot;Go Prerender Go!&quot;);
 
 &lt;p&gt;Rất đơn giản, hãy thêm dòng code sau ở thẻ &lt;em&gt;head&lt;/em&gt; ở file &lt;code class=&quot;highlighter-rouge&quot;&gt;index.html&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;meta name=&quot;fragment&quot; content=&quot;!&quot;&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;meta name=&quot;fragment&quot; content=&quot;!&quot;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;p&gt;Thẻ này sẽ làm cho các search engine nhận ra đây là một web có nội dung dynamic bằng javascript.&lt;/p&gt;
 
@@ -156,13 +342,17 @@ Câu lệnh &lt;code class=&quot;highlighter-rouge&quot;&gt;npm t&lt;/code&gt;, 
 &lt;p&gt;Giống với những câu lệnh có thể sử dụng, chúng cũng thường thắc mắc những package dependency nào đã có trong project. 
 Chúng ta có thể mở file &lt;code class=&quot;highlighter-rouge&quot;&gt;package.json&lt;/code&gt; và kiểm tra, nhưng có thể làm nó đơn giản hơn.&lt;/p&gt;
 
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Npm ls –depth 0&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Npm ls –depth 0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;p&gt;&lt;img src=&quot;https://cdn-images-1.medium.com/max/1600/1*MEg_C4RKrXQuh_RqgW9Whg.gif&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Để kiểm tra các package cục bộ, hãy chạy lệnh tương tự và thêm &lt;code class=&quot;highlighter-rouge&quot;&gt;–g&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;npm ls –g –depth 0&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm ls –g –depth 0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;p&gt;&lt;img src=&quot;https://cdn-images-1.medium.com/max/1600/1*3t0VjKip9sWm9symlyrtig.gif&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
@@ -215,7 +405,7 @@ Chúng ta có thể mở file &lt;code class=&quot;highlighter-rouge&quot;&gt;pa
 &lt;p&gt;Đó là tất cả.
 Tôi hy vọng bạn đã học được thức gì mới và tìm thấy ít nhất một trong số trick trên hữu ích cho công việc hàng ngày của bạn, và lý tưởng bạn cũng biết rõ npm hơn và có một số ý tưởng cho cách bạn sử dụng chúng tốt hơn trong công việc.&lt;/p&gt;
 
-&lt;p&gt;Tạo ấn tượng cho đồng nghiệp của bạn rất tốt, nhưng học được gì mới và trở nên chuyên nghiệp  thậm chí còn tốt hơn nhiều.&lt;/p&gt;</content><author><name>SecretSword</name></author><summary type="html">8 trick npm bạn có thể sử dụng để gây ấn tượng với đồng nghiệp của mình.</summary></entry><entry><title type="html">Test title!</title><link href="http://localhost:4000/jekyll/update/2017/08/02/test.html" rel="alternate" type="text/html" title="Test title!" /><published>2017-08-02T17:27:58+07:00</published><updated>2017-08-02T17:27:58+07:00</updated><id>http://localhost:4000/jekyll/update/2017/08/02/test</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2017/08/02/test.html">&lt;h2 id=&quot;markdown-and-i&quot;&gt;Markdown and I&lt;/h2&gt;
+&lt;p&gt;Tạo ấn tượng cho đồng nghiệp của bạn rất tốt, nhưng học được gì mới và trở nên chuyên nghiệp  thậm chí còn tốt hơn nhiều.&lt;/p&gt;</content><author><name>SecretSword</name></author><summary type="html">8 trick npm bạn có thể sử dụng để gây ấn tượng với đồng nghiệp của mình.</summary></entry><entry><title type="html">MarkDown syntax!</title><link href="http://localhost:4000/dev/2017/08/02/markdown-tutoriol.html" rel="alternate" type="text/html" title="MarkDown syntax!" /><published>2017-08-02T17:27:58+07:00</published><updated>2017-08-02T17:27:58+07:00</updated><id>http://localhost:4000/dev/2017/08/02/markdown-tutoriol</id><content type="html" xml:base="http://localhost:4000/dev/2017/08/02/markdown-tutoriol.html">&lt;h2 id=&quot;markdown-and-i&quot;&gt;Markdown and I&lt;/h2&gt;
 
 &lt;p&gt;&lt;strong&gt;Markdown&lt;/strong&gt; is a plain text formatting syntax created by John Gruber, aiming to provide a easy-to-read and feasible markup. The original Markdown syntax specification can be found &lt;a href=&quot;http://daringfireball.net/projects/markdown/syntax&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
 
