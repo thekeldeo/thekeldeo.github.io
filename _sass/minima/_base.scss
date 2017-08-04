@@ -1,0 +1,277 @@
+/**
+ * Reset some basic elements
+ */
+body, h1, h2, h3, h4, h5, h6,
+p, blockquote, pre, hr,
+dl, dd, ol, ul, figure {
+  margin: 0;
+  padding: 0;
+}
+
+
+
+/**
+ * Basic styling
+ */
+body {
+  font: $base-font-weight #{$base-font-size}/#{$base-line-height} $base-font-family;
+  color: $text-color;
+  background-color: $background-color;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-feature-settings: "kern" 1;
+     -moz-font-feature-settings: "kern" 1;
+       -o-font-feature-settings: "kern" 1;
+          font-feature-settings: "kern" 1;
+  font-kerning: normal;
+}
+
+
+
+/**
+ * Set `margin-bottom` to maintain vertical rhythm
+ */
+h1, h2, h3, h4, h5, h6,
+p, blockquote, pre,
+ul, ol, dl, figure,
+%vertical-rhythm {
+  margin-bottom: $spacing-unit / 2;
+}
+
+
+
+/**
+ * Images
+ */
+img {
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+p img {
+  display: block;
+  margin: auto;
+}
+
+/**
+ * Figures
+ */
+figure > img {
+  display: block;
+}
+
+figcaption {
+  font-size: $small-font-size;
+  font-family: 'Inconsolata', monospace;
+}
+
+
+
+/**
+ * Lists
+ */
+ul, ol {
+  margin-left: $spacing-unit;
+}
+
+li {
+  > ul,
+  > ol {
+    margin-bottom: 0;
+  }
+}
+
+
+
+a:hover {
+  text-decoration: underline;
+}
+
+img {
+  max-width: 100%;
+  border-radius: 3px;
+}
+
+table {
+  width: 100%;
+  border-radius: 3px;
+  border: 1px solid #DDD;
+}
+
+table thead {
+  background: #EFEFEF;
+}
+
+table thead th {
+  padding: 8px;
+  font-weight: bold;
+}
+
+table td {
+  padding: 8px;
+  margin: 0;
+  border-bottom: 1px solid #EEE;
+}
+
+table tr:nth-last-child(1) td {
+  border-bottom: none;
+}
+
+/**
+ * Headings
+ */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: $base-font-weight;
+}
+
+h1{
+  font-weight: 700;
+  &:before {
+    color: $grey-color;
+    margin-left: -20px;
+    margin-right: 10px;
+    content: "#";
+  }
+}
+
+/**
+ * Links
+ */
+a {
+  color: $brand-color;
+  text-decoration: none;
+  outline: none;
+
+  &:visited {
+    color: darken($brand-color, 15%);
+  }
+
+  &:hover {
+    color: $brand-color;
+    text-decoration: underline;
+  }
+
+  .social-media-list &:hover {
+    text-decoration: none;
+
+    .username {
+      text-decoration: underline;
+    }
+  }
+}
+
+/**
+ * Wrapper
+ */
+.wrapper {
+  max-width: -webkit-calc(#{$content-width} - (#{$spacing-unit} * 2));
+  max-width:         calc(#{$content-width} - (#{$spacing-unit} * 2));
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: $spacing-unit;
+  padding-left: $spacing-unit;
+  @extend %clearfix;
+
+  @include media-query($on-laptop) {
+    max-width: -webkit-calc(#{$content-width} - (#{$spacing-unit}));
+    max-width:         calc(#{$content-width} - (#{$spacing-unit}));
+    padding-right: $spacing-unit / 2;
+    padding-left: $spacing-unit / 2;
+  }
+}
+
+header .wrapper,
+main .wrapper{
+  border-bottom: 1px solid #EEE;
+}
+
+/**
+ * Clearfix
+ */
+%clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+
+/**
+ * Icons
+ */
+.icon > svg {
+  display: inline-block;
+  vertical-align: middle;
+
+  path {
+    fill: $grey-color;
+  }
+}
+
+.social-media-list {
+  .icon {
+    padding-right: 5px;
+  }
+
+  li + li {
+    padding-top: 5px;
+  }
+}
+.post-list li:before {
+  content: "- ";
+  margin-left: -18px;
+  display: inline;
+  float: left;
+  font-size: 19px;
+  color: $grey-color;
+}
+
+blockquote {
+  font-style: italic;
+  opacity: 0.6;
+  border-left: 3px solid #efefef;
+  padding-left: 16px;
+  font-family: 'Inconsolata', monospace;
+}
+
+code {
+  background: #efefef;
+  color: #4d4d4c;
+  padding: 2px; border-radius: 3px;
+  padding-left: 6px; padding-right: 6px;
+  font-size: 0.95em;
+  font-family: 'Inconsolata', monospace;
+}
+
+.skip code {
+  background: none;
+  color: initial;
+  font-size: 1.0em;
+  padding: initial;
+  font-family: 'Inconsolata', monospace;
+}
+
+pre {
+  background: #F8F8F8 !important;
+  padding: 10px; border-radius: 3px;
+  overflow-x: hidden !important;
+  font-family: 'Inconsolata', monospace;
+}
+
+pre > code {
+  padding: 0 !important; margin: 0 !important;
+  background: none;
+}
+
+pre code, pre code * {
+  font-size: 1.0em !important;
+}
+
+pre.math {
+  background: transparent !important;
+  text-align: center;
+  padding-top: 20px; padding-bottom: 20px;
+}
+
+code.math {
+  background: transparent !important;
+}
