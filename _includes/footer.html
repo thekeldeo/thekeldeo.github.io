@@ -2,45 +2,6 @@
 
   <div class="wrapper">
 
-    <!--<h2 class="footer-heading">{{ site.title | escape }}</h2>-->
-
-    <!--<div class="footer-col-wrapper">-->
-      <!--<div class="footer-col footer-col-1">-->
-        <!--<ul class="contact-list">-->
-          <!--<li>-->
-            <!--{% if site.author %}-->
-              <!--{{ site.author | escape }}-->
-            <!--{% else %}-->
-              <!--{{ site.title | escape }}-->
-            <!--{% endif %}-->
-            <!--</li>-->
-            <!--{% if site.email %}-->
-            <!--<li><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>-->
-            <!--{% endif %}-->
-        <!--</ul>-->
-      <!--</div>-->
-
-      <!--<div class="footer-col footer-col-2">-->
-        <!--<ul class="social-media-list">-->
-          <!--{% if site.github_username %}-->
-          <!--<li>-->
-            <!--{% include icon-github.html username=site.github_username %}-->
-          <!--</li>-->
-          <!--{% endif %}-->
-
-          <!--{% if site.twitter_username %}-->
-          <!--<li>-->
-            <!--{% include icon-twitter.html username=site.twitter_username %}-->
-          <!--</li>-->
-          <!--{% endif %}-->
-        <!--</ul>-->
-      <!--</div>-->
-
-      <!--<div class="footer-col footer-col-3">-->
-        <!--<p>{{ site.description | escape }}</p>-->
-      <!--</div>-->
-    <!--</div>-->
-
     <div class="text-center">
       &copy; 2017 &#8226; <a target="_blank" href="https://facebook.com/{{ site.facebook }}">{{ site.author }}</a>
 
@@ -48,4 +9,23 @@
 
   </div>
 
+  <script>
+      window.fbAsyncInit = function() {
+          FB.init({
+              appId      : '792975930864591',
+              cookie     : true,
+              xfbml      : true,
+              version    : 'v2.8'
+          });
+          FB.AppEvents.logPageView();
+      };
+
+      (function(d, s, id){
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) {return;}
+          js = d.createElement(s); js.id = id;
+          js.src = "//connect.facebook.net/en_US/sdk.js";
+          fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+  </script>
 </footer>
