@@ -87,7 +87,6 @@
             $scope.preload = true;
             let url = 'https://api.genderize.io/?name=' + $scope.formData.name;
             if($scope.formData.country) url +=  '&country_id=' + $scope.formData.country.toLowerCase();
-            console.log(url);
             $http.get(url).then(function (res) {
                 $scope.preload = false;
                 $scope.result = res.data
