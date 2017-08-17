@@ -5,7 +5,7 @@
     categories: dev
 ---
 
-MEAN stack là một combo tuyệt vời sử dụng SPA và client rendering, rất phù hợp với webapp cho admin, stuff ,...
+MEAN stack là một combo tuyệt vời sử dụng SPA và client rendering, rất phù hợp với webapp cho admin, staff ,...
 Nhưng vấn đề khá lớn của Mean Stack nói riêng và những framework client rendering nói chung đó là rất khó để những con bot như google có thể crawl được dữ liệu.
 
 Hôm nay tôi sẽ hướng dẫn mọi người khắc phục vẫn đề này một phần nào đó !.

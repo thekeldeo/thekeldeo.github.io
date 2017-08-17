@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Kiểm tra giới tính của tên</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js"></script>
+
+</head>
+<body>
+
+<div ng-app="myApp" ng-controller="myCtrl">
+
+
+    <div class="section no-pad-bot" id="index-banner">
+        <div class="container">
+            <br><br>
+            <h1 class="header center orange-text">Kiểm tra giới tính của tên</h1>
+            <div class="row center">
+                <form ng-submit="submit()">
+                    <input type="text" ng-model="formData.name" placeholder="nhập tên của bạn vào đây" required>
+
+                    <select id="country" class="browser-default" name="" id="" ng-model="formData.country">
+                        <option value="" disabled>Chọn nước để kiểm tra rõ hơn!</option>
+                        <option value="{{item.Code}}" ng-repeat="item in countries">{{item.Name}}</option>
+                    </select>
+
+                    <br>
+
+                    <button class="btn waves-effect waves-light" type="submit" name="action">Kiểm tra
+                        <i class="material-icons right"></i>
+                    </button>
+                </form>
+            </div>
+            <div class="row center">
+                <div class="preloader-wrapper big active" ng-if="!result.probability && preload">
+                    <div class="spinner-layer spinner-blue-only">
+                        <div class="circle-clipper left">
+                            <div class="circle"></div>
+                        </div><div class="gap-patch">
+                        <div class="circle"></div>
+                    </div><div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                    </div>
+                </div>
+
+                <div ng-if="result.probability">
+                    <h2>Kết quả: </h2>
+                    <h3 style="display: inline-block" class="teal-text">
+                        {{result.name}}
+                        {{result.probability*100}} % là tên của
+                        <div style="display: inline-block" ng-if="result.gender== 'male'">Nam</div>
+                        <div style="display: inline-block" ng-if="result.gender== 'female'">Nữ</div>
+                    </h3>
+                </div>
+
+                <div ng-if="!result.probability && result.name">
+                    <h2>Kết quả: </h2>
+                    <h3 style="display: inline-block" class="teal-text">
+                        Không rõ ahuhu T_T !!
+                    </h3>
+                </div>
+            </div>
+            <br><br>
+
+        </div>
+    </div>
+</div>
+
+<script>
+    var app = angular.module('myApp', []);
+    app.controller('myCtrl', function($scope, $http) {
+        $scope.formData = {};
+        $scope.countries = [];
+        $scope.result = {};
+        $scope.preload = false;
+        $http.get('country.json').then(function (res) {
+          $scope.countries = res.data;
+        });
+
+        $scope.submit = function () {
+            $scope.result = {};
+            $scope.preload = true;
+            let url = 'https://api.genderize.io/?name=' + $scope.formData.name;
+            if($scope.formData.country) url +=  '&country_id=' + $scope.formData.country.toLowerCase();
+            console.log(url);
+            $http.get(url).then(function (res) {
+                $scope.preload = false;
+                $scope.result = res.data
+            })
+        }
+    });
+</script>
+
+</body>
+</html>
